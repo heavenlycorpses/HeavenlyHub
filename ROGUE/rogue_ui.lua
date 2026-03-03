@@ -3119,7 +3119,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
         end
     end
     
-    local repo = "https://raw.githubusercontent.com/heisenburgah/HYDROXIDE/refs/heads/main/"
+    local repo = "https://raw.githubusercontent.com/heavenlycorpses/HeavenlyHub/refs/heads/main/"
     local success, library_func = pcall(function()
         return loadstring(game:HttpGet(repo .. "DEPENDENCIES/Library.lua", true))()
     end)
