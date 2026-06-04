@@ -4756,6 +4756,10 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                     elseif (FindFirstChild(v, 'Attachment') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter').Rate == 3) then
                         return 'Mysterious Artifact', cheat_client.trinket_colors.mythic.Color, cheat_client.trinket_colors.mythic.ZIndex
 
+					elseif (FindFirstChild(v, "Attachment") and FindFirstChildOfClass(v.Attachment, "ParticleEmitter") and FindFirstChildOfClass(v.Attachment, "ParticleEmitter").Name == "swirl") then
+						return "Idol Of War", cheat_client.trinket_colors.mythic.Color, cheat_client.trinket_colors.mythic.ZIndex
+
+
                     elseif (v:IsA('MeshPart') and v.MeshId == "rbxassetid://4103271893") then
                         return 'Candy', cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
                     elseif v.ClassName == "UnionOperation" then
