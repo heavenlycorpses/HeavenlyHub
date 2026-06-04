@@ -4756,7 +4756,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                     elseif (FindFirstChild(v, 'Attachment') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter').Rate == 3) then
                         return 'Mysterious Artifact', cheat_client.trinket_colors.mythic.Color, cheat_client.trinket_colors.mythic.ZIndex
 					elseif (FindFirstChild(v, "Attachment") and FindFirstChild(v.Attachment, "swirl")) then
-					    return "Idol Of War", cheat_client.trinket_colors.mythic.Color, cheat_client.trinket_colors.mythic.ZIndex
+					    return "Idol Of War", cheat_client.trinket_colors.rare.Color, cheat_client.trinket_colors.rare.ZIndex
 
 
 
