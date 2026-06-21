@@ -899,6 +899,8 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
             8791234913,
             2260532477,
             677317511,
+			7148956808, --fuck u athecalik. ill get ur ass banned 
+					
         },
         aimbot = {
             aimkey_translation = {
