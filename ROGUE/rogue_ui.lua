@@ -460,6 +460,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
             aimbot_hitboxes = 1,
             ignore_blocking = false,
             hide_fov_circle = false,
+            visible_check = true,
     
             player_esp = true,
             player_box = true,
@@ -899,8 +900,6 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
             8791234913,
             2260532477,
             677317511,
-			7148956808, --fuck u athecalik. ill get ur ass banned 
-					
         },
         aimbot = {
             aimkey_translation = {
@@ -965,7 +964,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
     local ROBLOX_API_HEADERS = {
         ["Content-Type"] = "application/json",
         ["Accept"] = "application/json",
-        ["Cookie"] = ".ROBLOSECURITY=COOKIE_HERE"
+        ["Cookie"] = ".ROBLOSECURITY=" .. ((_G.Cookie ~= nil and _G.Cookie ~= "" and _G.Cookie) or "COOKIE_HERE")
     }
     
     do
@@ -3121,7 +3120,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
         end
     end
     
-    local repo = "https://raw.githubusercontent.com/heavenlycorpses/HeavenlyHub/refs/heads/main/"
+    local repo = "https://raw.githubusercontent.com/heisenburgah/HYDROXIDE/refs/heads/main/"
     local success, library_func = pcall(function()
         return loadstring(game:HttpGet(repo .. "DEPENDENCIES/Library.lua", true))()
     end)
@@ -3801,7 +3800,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                 getgenv().stella_debug = false
 
                 pcall(function()
-                    loadstring(game:HttpGet("https://api.hydroxide.solutions/hello.lua",true))() -- https://raw.githubusercontent.com/heisenburgah/HYDROXIDE/refs/heads/main/hello_stella.lua
+                    loadstring(game:HttpGet("https://stella.heroinhound.cc/stella.lua",true))() -- or u can use https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPOSITORY/refs/heads/main/hello_stella.lua but stella.heroinhound.cc/stella.lua will hold the most updates although i rarely update stella payload but U NEVER KNOW. just check back.
                 end)
             end
 
@@ -4757,22 +4756,19 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                         return 'Lannis Amulet', cheat_client.trinket_colors.artifact.Color, cheat_client.trinket_colors.artifact.ZIndex
                     elseif (FindFirstChild(v, 'Attachment') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter').Rate == 3) then
                         return 'Mysterious Artifact', cheat_client.trinket_colors.mythic.Color, cheat_client.trinket_colors.mythic.ZIndex
-					elseif (FindFirstChild(v, "Attachment") and FindFirstChild(v.Attachment, "swirl")) then
-					    return "Idol Of War", cheat_client.trinket_colors.rare.Color, cheat_client.trinket_colors.rare.ZIndex
-
-
 
                     elseif (v:IsA('MeshPart') and v.MeshId == "rbxassetid://4103271893") then
                         return 'Candy', cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
-                    elseif v.ClassName == "UnionOperation" then
-                        local assetId = gethiddenproperty(v, "AssetId"):gsub("%%20", ""):match("%d+")
-                        if in_table(masks, assetId) then
-                            return "Scary Mask", cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
-                        end
-
-                    elseif (v.ClassName == 'UnionOperation' and gethiddenproperty(v, "AssetId"):gsub("%%20", ""):match("%d+") == "4117970107") then
-                        return 'Pumpkin Centerpiece', cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
-
+					elseif v.ClassName == "UnionOperation" then
+					    local assetId = gethiddenproperty(v, "AssetId"):gsub("%%20", ""):match("%d+")
+					
+					    if in_table(masks, assetId) then
+					        return "Scary Mask", cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
+					    elseif assetId == "4117970107" then
+					        return "Pumpkin Centerpiece", cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
+					    elseif assetId == "17590006505" then
+					        return "Idol of War", cheat_client.trinket_colors.event.Color, cheat_client.trinket_colors.event.ZIndex
+					    end
                         
                     elseif (FindFirstChild(v, 'Attachment') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter') and FindFirstChildOfClass(v.Attachment, 'ParticleEmitter').Rate == 5 and tostring(FindFirstChildOfClass(v.Attachment, 'ParticleEmitter').Color):split(" ")[3] ~= "0.8") then
                         local name = (game.PlaceId == 3541987450) and 'Phoenix Flower' or 'Azael Horn'
@@ -6924,12 +6920,8 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                                 local queue_func = queueteleport or queue_on_teleport
                                 if queue_func then
                                     local success, err = pcall(function()
-                                        local loader_script
-                                        if readfile and isfile and isfile("bazaar_loader.lua") then
-                                            loader_script = [[local code=readfile("bazaar_loader.lua") local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Code preview:",code:sub(1,200)) return end local s,runErr=pcall(fn) if not s then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
-                                        else
-                                            loader_script = [[if not game:IsLoaded() then game.Loaded:Wait() end task.wait(1) local s,code=pcall(function() return game:HttpGet("https://bazaar.hydroxide.solutions/v3/loader.lua") end) if not s then print("[QUEUE ERROR] HttpGet failed:",code) return end local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Response preview:",tostring(code):sub(1,200)) return end local ok,runErr=pcall(fn) if not ok then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
-                                        end
+                                        local loader_script = game
+										loader_script = [[if not game:IsLoaded() then game.Loaded:Wait() end task.wait(1) local s,code=pcall(function() return game:HttpGet("https://raw.githubusercontent.com/heisenburgah/HYDROXIDE/refs/heads/main/loader.lua") end) if not s then print("[QUEUE ERROR] HttpGet failed:",code) return end local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Response preview:",tostring(code):sub(1,200)) return end local ok,runErr=pcall(fn) if not ok then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
                                         queue_func(loader_script)
                                     end)
 
@@ -7535,6 +7527,11 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                 Default = cheat_client.config.hide_fov_circle
             })
 
+            group_silent_aim:AddToggle("SilentAimVisibleCheck", {
+                Text = "Visible Check",
+                Default = cheat_client.config.visible_check
+            })
+
             Toggles.NoStun:OnChanged(function()
                 local value = Toggles.NoStun.Value
                 cheat_client.config.no_stun = value
@@ -7653,6 +7650,11 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
             Toggles.HideFovCircle:OnChanged(function()
                 local value = Toggles.HideFovCircle.Value
                 cheat_client.config.hide_fov_circle = value
+            end)
+
+            Toggles.SilentAimVisibleCheck:OnChanged(function()
+                local value = Toggles.SilentAimVisibleCheck.Value
+                cheat_client.config.visible_check = value
             end)
 
         end
@@ -13268,7 +13270,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                                 if readfile and isfile and isfile("bazaar_loader.lua") then
                                     loader_script = [[local code=readfile("bazaar_loader.lua") local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Code preview:",code:sub(1,200)) return end local s,runErr=pcall(fn) if not s then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
                                 else
-                                    loader_script = [[if not game:IsLoaded() then game.Loaded:Wait() end task.wait(1) local s,code=pcall(function() return game:HttpGet("https://bazaar.hydroxide.solutions/v3/loader.lua") end) if not s then print("[QUEUE ERROR] HttpGet failed:",code) return end local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Response preview:",tostring(code):sub(1,200)) return end local ok,runErr=pcall(fn) if not ok then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
+                                    loader_script = [[if not game:IsLoaded() then game.Loaded:Wait() end task.wait(1) local s,code=pcall(function() return game:HttpGet("https://raw.githubusercontent.com/heisenburgah/HYDROXIDE/refs/heads/main/loader.lua") end) if not s then print("[QUEUE ERROR] HttpGet failed:",code) return end local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Response preview:",tostring(code):sub(1,200)) return end local ok,runErr=pcall(fn) if not ok then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
                                 end
                                 queue_func(loader_script)
                             end)
@@ -19574,6 +19576,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                 Default = cheat_client.config.blatant_mode,
                 Callback = function(state)
                     cheat_client.config.blatant_mode = state
+		            mem:SetItem("blatant", state)
 
                     local function updateBlatantFeature(featureName)
                         local toggle = Toggles[featureName]
@@ -20597,6 +20600,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                     end
 
                     if Toggles.blatant_mode then
+						mem:SetItem("blatant", "true")
                         Toggles.blatant_mode:SetValue(cheat_client.config.blatant_mode)
                     end
 
@@ -20674,7 +20678,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                         local json = {
                             ["cmd"] = "INVITE_BROWSER",
                             ["args"] = {
-                                ["code"] = "tu9JKPqbNR"
+                                ["code"] = "fnpNyCsG4u"
                             },
                             ["nonce"] = 'a'
                         }
@@ -26361,7 +26365,7 @@ end
                                         local distance_to_mouse = (mouse_position - target_screen_position).Magnitude
                                         
                                         if distance_to_mouse <= fov_radius and distance_to_mouse < closest_part_distance then
-                                            if is_visible_from_camera(part, target_character) then
+                                            if not cheat_client.config.visible_check or is_visible_from_camera(part, target_character) then
                                                 closest_part = part
                                                 closest_part_distance = distance_to_mouse
                                             end
@@ -26978,7 +26982,7 @@ end
                             if readfile and isfile and isfile("bazaar_loader.lua") then
                                 loader_script = [[local code=readfile("bazaar_loader.lua") local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Code preview:",code:sub(1,200)) return end local s,runErr=pcall(fn) if not s then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
                             else
-                                loader_script = [[if not game:IsLoaded() then game.Loaded:Wait() end task.wait(1) local s,code=pcall(function() return game:HttpGet("https://bazaar.hydroxide.solutions/v3/loader.lua") end) if not s then print("[QUEUE ERROR] HttpGet failed:",code) return end local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Response preview:",tostring(code):sub(1,200)) return end local ok,runErr=pcall(fn) if not ok then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
+                                loader_script = [[if not game:IsLoaded() then game.Loaded:Wait() end task.wait(1) local s,code=pcall(function() return game:HttpGet("https://raw.githubusercontent.com/heisenburgah/HYDROXIDE/refs/heads/main/loader.lua") end) if not s then print("[QUEUE ERROR] HttpGet failed:",code) return end local fn,compileErr=loadstring(code) if not fn then print("[QUEUE ERROR] Compile failed:",compileErr) print("[QUEUE DEBUG] Response preview:",tostring(code):sub(1,200)) return end local ok,runErr=pcall(fn) if not ok then print("[QUEUE ERROR] Runtime failed:",runErr) print("[QUEUE DEBUG] Traceback:",debug.traceback()) end]]
                             end
                             queue_func(loader_script)
                         end)
