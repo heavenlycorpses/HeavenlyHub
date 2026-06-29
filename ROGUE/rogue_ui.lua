@@ -13814,7 +13814,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                                 task.spawn(function()
                                     pcall(function() utility:plain_webhook("@everyone bot died - kicking") end)
                                     task.wait(0.3)
-                                    plr:Kick("bot died")
+                                    TrinketBotServerhop("player died")
                                 end)
                             end
                         end))
@@ -16965,7 +16965,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                                         pcall(function() library:Notify("Died during auto-start - kicking") end)
                                         pcall(function() utility:plain_webhook("@everyone Bot died during auto-start - kicking") end)
                                         task.wait(0.3)
-                                        plr:Kick("Bot died during auto-start")
+                                        TrinketBotServerhop("player died during auto start")
                                     end
                                 end)
                             else
