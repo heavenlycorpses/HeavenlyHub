@@ -716,6 +716,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
             ["Blacksmith"] = {"Remote Smithing","Grindstone"},
             ["Ronin"] = {"Calm Mind","Swallow Reversal","Triple Slash","Blade Flash","Flowing Counter"},
             ["Abyss Walker"] = {"Abyssal Scream","Wrathful Leap"},
+			["Vangaurd"] = {"Puncture","Brandish","Azure Ignition"}, 
         },
         spell_cost = {
             ["Armis"] = {{40, 60}, {70, 80}},
