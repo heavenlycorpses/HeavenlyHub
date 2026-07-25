@@ -13816,7 +13816,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
                             else
                                 task.spawn(function()
                                     pcall(function() utility:plain_webhook("@everyone bot died - kicking") end)
-                                    task.wait(0.3)
+                                    task.wait(1)
                                     TrinketBotServerhop("player died")
                                 end)
                             end
