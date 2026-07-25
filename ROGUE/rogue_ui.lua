@@ -7347,7 +7347,7 @@ if game.PlaceId == 3541987450 or game.PlaceId == 5208655184 or game.PlaceId == 1
         local Toggles = library.Toggles
 
         local window = library:CreateWindow({
-            Title = HXD_UserNote and string.format("Heavenly | Hub",
+            Title = HXD_UserNote and string.format("Heavenly",
             NotifySide = "Left",
             Footer = "",
             Center = true,
